@@ -65,8 +65,8 @@ class Driver:
     async def __sign_in_as_guest(self, tab: Tab):
         while True:
             try:
-                button = await tab.select('div[class*=css-1gtmaw0-DivBoxContainer]', timeout=5)
-                await button.click()
+                buttons = await tab.select_all('div[class*=css-1cp64nz-DivTextContainer]', timeout=5)
+                await buttons[-1].click()
             except TimeoutError:
                 break
     
