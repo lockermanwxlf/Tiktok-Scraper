@@ -1,8 +1,8 @@
 import requests
 import os
-from .provider import Provider as __Provider, Provision as __Provision
+from .provider import Provider, Provision
 
-class MegaProvider(__Provider):
+class MegaProvider(Provider):
     def __init__(self, mega_path) -> None:
         self.__mega_path = mega_path
     
@@ -14,7 +14,7 @@ class MegaProvider(__Provider):
             }
             ).json()["result"]
     
-    def provision(self, directory: str, filename: str) -> __Provision:
+    def provision(self, directory: str, filename: str) -> Provision:
         os.makedirs("tmp", exist_ok=True)
         file = open(f"tmp/{filename}", "wb+")
         def on_complete():
@@ -28,4 +28,4 @@ class MegaProvider(__Provider):
                 }
             )
             
-        return __Provision(file, on_complete)
+        return Provision(file, on_complete)
