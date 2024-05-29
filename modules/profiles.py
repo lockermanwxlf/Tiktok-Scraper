@@ -3,7 +3,7 @@ import os
 import json
 
 class Profiles:
-    def __init__(self) -> None:
+    def __init__(self, use_state = True) -> None:
         os.makedirs(".state", exist_ok=True)
         if not os.path.exists(".state/state.json"):
             with open(".state/state.json", "w") as file:
@@ -14,7 +14,7 @@ class Profiles:
         with open(".state/state.json", "r+") as file:
             state = json.load(file)
         self.__profiles = list(csv.reader(open("profiles.csv", "r")))[1:]
-        self.__place = 0 if state["last"] >= len(self.__profiles) else state["last"]
+        self.__place = 0 if not use_state or state["last"] >= len(self.__profiles) else state["last"]
         
     def __iter__(self):
         if self.__place >= len(self.__profiles):

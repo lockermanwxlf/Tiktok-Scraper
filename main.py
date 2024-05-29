@@ -7,19 +7,19 @@ import re
 
 async def main():
     driver = await Driver.get_instance()
-    provider = MegaProvider("")
+    provider = MegaProvider("/MEGAsync/TikTok")
     while True:
-        profiles = Profiles()
+        profiles = Profiles(False)
         for username, directory, recovery_id in profiles:
             result = await driver.get_profile(username)
             post_links = await result.get_post_links()
             pattern = re.compile(rf"https://www.tiktok.com/@{username}/(.*)/(\d*)")
             posts_info = [re.match(pattern, link).groups() for link in post_links]
-            filenames = [f"{directory} {post_id}.{"mp4" if post_type == "video" else "jpg"}" for (post_type, post_id) in posts_info]
-            
-            print(filenames)
+            posts_ids = [p[1] for p in posts_info]
             
             # Filter for posts that should be downloaded
+            posts_ids = provider.filter_list(directory, posts_ids)
+            posts_info = [p for p in posts_info if p[1] in posts_ids]
             
             # Download posts
             
