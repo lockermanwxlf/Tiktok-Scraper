@@ -23,8 +23,9 @@ pip install -r requirements.txt
 1) Set `OUTPUT_DIRECTORY` in [config.json](config.json) if you want to. By default, posts are saved to 'Tiktok-Scraper/output'.
 
 2) Add profiles you want to download posts for in [profiles.csv](profiles.csv). User posts are stored in '`OUTPUT_DIRECTORY`/`Directory`'.
+For now `RecoveryId` is useless.
 
-3) Run the program. In the command line, you can do:
+4) Run the program. In the command line, you can do:
 ```bash
 python main.py
 ```
