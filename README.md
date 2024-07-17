@@ -1,6 +1,10 @@
 # Tiktok-Scraper
 Nodriver-based scraper for TikTok
 
+There is a memory leak in this. From my experience it seems running any automated browser in a loop (like selenium) leads to a memory leak, so 
+try not to let the program run for more than an hour or you'll have an 8gb task. You can restart it immediately after cancellation 
+if you want to.
+
 ---
 
 This makes use of my [tiktok_driver](https://github.com/lockermanwxlf/Tiktok-Driver) package, thus Python version >= 3.9 is required.
