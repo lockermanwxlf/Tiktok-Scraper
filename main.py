@@ -25,7 +25,7 @@ async def main():
             os.makedirs(output_directory, exist_ok=True)
             existing_files = next(os.walk(output_directory))[2]
             matches = [re.search(pattern, filename) for filename in existing_files]
-            matches = [match.group(1) for match in matches if len(match.groups()) > 0]
+            matches = [match.group(1) for match in matches if match and len(match.groups()) > 0]
             
             # Remove posts from download list if they are already downloaded.
             posts = filter(lambda post: post.id not in matches, posts)
