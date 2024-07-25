@@ -42,7 +42,7 @@ async def main():
                     with open(os.path.join(output_directory, filename), 'wb+') as f:
                         f.write(content)
                     time.sleep(5)
-        time.sleep(5)
+            time.sleep(24)
 
 if __name__ == "__main__":
     asyncio.run(main())
