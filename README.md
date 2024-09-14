@@ -5,6 +5,8 @@ There is a memory leak in this. From my experience it seems running any automate
 try not to let the program run for more than an hour or you'll have an 8gb task. You can restart it immediately after cancellation 
 if you want to.
 
+TikTok has recently upgraded their API and they no longer seem to rate limit (or are more lenient with it). This is probably going to change in the future.
+
 ---
 
 This makes use of my [tiktok_driver](https://github.com/lockermanwxlf/Tiktok-Driver) package, thus Python version >= 3.9 is required.
@@ -31,6 +33,4 @@ python main.py
 ```
 
 # Issues
-Likely, regardless of how long you wait between profiles and downloads, you are going to get rate limited by TikTok. They will just give you a 403 forbidden when visiting a user's page. You can use a VPN to bypass this.
-
 If you are reporting an issue with the driver itself (for example, Tiktok likes to change the class names in their DOM often), please report it in the [tiktok_driver repo](https://github.com/lockermanwxlf/Tiktok-Driver) instead.
